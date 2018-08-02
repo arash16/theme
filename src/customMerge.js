@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export default function customMerge(obj1, obj2) {
   const objToReturn = {};
 
@@ -13,8 +15,8 @@ export default function customMerge(obj1, obj2) {
     for (property2 in obj2) {
       if (property1 === property2) {
         if (
-          typeof obj1[property1] !== "object" ||
-          typeof obj2[property1] !== "object" ||
+          !_.isPlainObject(obj1[property1]) ||
+          !_.isPlainObject(obj2[property1]) ||
           !obj2[property1] ||
           !obj1[property1]
         ) {
